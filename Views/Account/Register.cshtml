@@ -1,0 +1,125 @@
+﻿ @model List<Register>
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Kayıt ol</h2>
+        <form asp-action="Register" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="name">Ad:</label>
+                <input autocomplete="off" type="text" id="name" name="Name" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="surname">Soyad:</label>
+                <input autocomplete="off" type="text" id="surname" name="Surname" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="username">Kullanıcı adı:</label>
+                <input autocomplete="off" type="text" id="username" name="Username" class="form-control" required maxlength="30" />
+            </div>
+            <div class="form-group">
+                <label for="email">E-Posta:</label>
+                <input autocomplete="off" type="email" id="email" name="Email" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Telefon numarası:</label>
+                <input autocomplete="off" type="text" id="phoneNumber" name="PhoneNumber" class="form-control" required pattern="^\+90[1-9]\d{9}$" />
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre:</label>
+                <div class="input-group">
+                    <input autocomplete="off" type="password" id="password" name="Password" class="form-control" required />
+                    <div class="input-group-append">
+                        <span class="input-group-text" onclick="togglePasswordVisibility()">
+                            <i id="togglePasswordIcon" class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Kayıt ol</button>
+        </form>
+        <div class="new-user">
+            Zaten üye misiniz? <a href="/Account/Login">Giriş yapmak için tıklayınız.</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("phoneNumber").addEventListener("input", function (event) {
+            var input = event.target;
+            var phoneNumber = input.value.replace(/\D/g, '');
+            var formattedPhoneNumber = '';
+
+            if (phoneNumber.length > 12) {
+                phoneNumber = phoneNumber.slice(0, 12);
+            }
+
+            if (phoneNumber.substring(0, 2) !== '90') {
+                formattedPhoneNumber = '+90' + phoneNumber;
+            } else {
+                formattedPhoneNumber = '+' + phoneNumber;
+            }
+
+            input.value = formattedPhoneNumber;
+        });
+
+        document.getElementById("username").addEventListener("input", function (event) {
+            var input = event.target;
+            var username = input.value;
+
+            username = username.replace(/[çÇğĞıİöÖşŞüÜ]/g, '');
+
+            if (username.length > 30) {
+                username = username.slice(0, 30);
+            }
+
+            input.value = username;
+        });
+
+        function validateForm() {
+            var username = document.getElementById("username").value;
+
+            if (/[çÇğĞıİöÖşŞüÜ]/.test(username)) {
+                alert("Kullanıcı adı Türkçe karakter içermemelidir.");
+                return false;
+            }
+
+            return true;
+        }
+
+        document.getElementById("password").addEventListener("input", function (event) {
+            var input = event.target;
+            var password = input.value;
+
+            if (password.length < 8 || !/[A-Z]/.test(password) || !/\d/.test(password)) {
+                input.setCustomValidity("Şifreniz en az 8 karakter uzunluğunda olmalı, en az bir büyük harf ve bir sayı içermelidir.");
+            } else {
+                input.setCustomValidity("");
+            }
+        });
+
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            var icon = document.getElementById("togglePasswordIcon");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@model Register
+
+@{
+    ViewData["Title"] = "Kullanıcı Bilgileri";
+}
+
+<h2 class="mb-4">Kullanıcı Bilgileri Güncelle</h2>
+<form class="row g-3" method="post" autocomplete="off">
+    <div class="mb-3">
+        <label class="form-label">Ad:</label>
+        <input required type="text" value="@Model.Name" class="form-control" name="Name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Soyad:</label>
+        <input required type="text" value="@Model.Surname" class="form-control" name="Surname">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Kullanıcı Adı:</label>
+        <input required type="text" value="@Model.Username" class="form-control" name="Username">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <input required type="text" value="@Model.Email" class="form-control" name="Email">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Telefon Numarası:</label>
+        <input required type="text" value="@Model.PhoneNumber" class="form-control" name="PhoneNumber">
+    </div>
+    <button class="btn btn-primary">Güncelle</button>
+</form>

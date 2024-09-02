@@ -1,0 +1,20 @@
+﻿@model List<Diary>
+
+@{
+    ViewData["title"] = "Günlükler";
+}
+
+<div class="container mx-auto px-4">
+    @foreach (var diaries in Model)
+    {
+        <div class="bg-white p-6 flex flex-col justify-start h-full">
+            <hr>
+            <span class="pb-6">@diaries.DateUpdated</span>
+            <br>
+            <span class="text-3xl font-bold pb-4">@diaries.Title</span>
+            <br>
+            <a href="/Diary/DiaryDetail/@diaries.Id" class="uppercase text-gray-800 hover:text-black mt-auto" style="text-decoration: none">Devamı için tıklayınız.<i class="fas fa-arrow-right"></i></a>
+            <hr>
+        </div>
+    }
+</div>

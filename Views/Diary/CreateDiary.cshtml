@@ -1,0 +1,44 @@
+﻿@model Diary
+
+@{
+    ViewData["Title"] = "Günlük Ekle";
+}
+
+<h2 class="mb-4">Günlük ekle</h2>
+<form class="row g-3" method="post" enctype="multipart/form-data" autocomplete="off">
+    <div class="mb-3">
+        <label class="form-label">Başlık</label>
+        <input required type="text" class="form-control" name="Title">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">İçerik</label>
+        <input required type="text" class="form-control" name="Description">
+    </div>
+    <input type="file" name="Img" id="file" accept="image/png, image/jpeg" required/>  
+    @* <input type="file" name="Img[]" id="file" accept="image/png, image/jpeg" multiple> *@
+    <button class="btn btn-success">Ekle</button>
+</form>
+
+@* @section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <style>
+        .ql-container {
+            height: auto !important;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script>
+        const quill = new Quill('#editor', { theme: 'snow' });
+
+        const form = document.querySelector('form');
+        form.addEventListener('formdata', (event) => {
+            event.formData.append(
+                quill.container.dataset.name,
+                quill.getSemanticHTML()
+            );
+        });
+    </script>
+} *@

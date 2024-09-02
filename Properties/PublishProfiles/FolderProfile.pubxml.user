@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\acunmedya\DayByDay\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2024-07-16T20:56:46.9403649Z;True|2024-07-16T23:46:49.6870484+03:00;True|2024-07-16T23:12:12.1304782+03:00;True|2024-07-16T19:57:15.8306192+03:00;True|2024-07-14T18:29:45.1314097+03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

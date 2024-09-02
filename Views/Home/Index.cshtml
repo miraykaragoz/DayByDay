@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Hoş Geldiniz";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/homepage.css">
+
+<div class="container">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>DayByDay'e Hoş Geldiniz</h1>
+            <p>Günlüklerinizi paylaşabileceğiniz ve saklayabileceğiniz kişisel alanınız. Hayatınızın her anını kayıt altına alarak, geçmişe dair anılarınızı hatırlayın ve yeni hatıralar yaratın.</p>
+            <a class="btn btn-primary" href="/Account/Login">Giriş Yap</a>
+            <a class="btn btn-secondary" href="/Account/Register">Kayıt Ol</a>
+        </div>
+    </div>
+    <div class="features-section">
+        <h2>Neler Sunuyoruz?</h2>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-lock"></i>
+                <h3>Güvenli Saklama</h3>
+                <p>Günlükleriniz güvenli bir şekilde saklanır ve sadece sizin erişiminize açık olur.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-share-alt"></i>
+                <h3>Kolay Paylaşım</h3>
+                <p>Günlüklerinizi dilediğiniz kişilerle kolayca paylaşabilirsiniz.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-cloud"></i>
+                <h3>Otomatik Yedekleme</h3>
+                <p>Verileriniz otomatik olarak yedeklenir, böylece hiçbir anınızı kaybetmezsiniz.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 - daybyday.com.tr</p>
+    </footer>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+}

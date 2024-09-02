@@ -1,0 +1,48 @@
+﻿@model UserProfile
+
+@{
+    ViewData["Title"] = "Kullanıcı Bilgileri";
+}
+
+<div class="container">
+    <h2>Kullanıcı Bilgileri</h2>
+    <div class="info">
+        <p><strong>Ad:</strong> @Model.Name</p>
+        <p><strong>Soyad:</strong> @Model.Surname</p>
+        <p><strong>Kullanıcı Adı:</strong> @Model.Username</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Telefon Numarası:</strong> @Model.PhoneNumber</p>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
+
+    h2 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .info {
+        margin-top: 20px;
+    }
+
+        .info p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+    strong {
+        font-weight: bold;
+    }
+</style>

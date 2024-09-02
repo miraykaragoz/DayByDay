@@ -1,0 +1,204 @@
+﻿@model Diary
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<link rel="stylesheet" href="~/css/yorumlar.css" />
+<article class="flex flex-col shadow my-4">
+    @if (Model != null)
+    {
+        <div class="bg-white flex flex-col justify-start p-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold pb-3">@Model.Title</h1>
+                <div>
+                    <a class="btn btn-primary mr-2" href="/Diary/UpdateDiary/@Model.Id">Güncelle</a>
+                    <a class="btn btn-danger" href="/Diary/DeleteDiary/@Model.Id" onclick="return confirm('Bu günlüğü silmek istediğinize emin misiniz?');">Sil</a>
+                </div>
+            </div>
+            <p class="pb-4">@Html.Raw(Model.Description)</p>
+            <hr class="my-4">
+            <h4 class="text-xl font-semibold pb-2">Fotoğraflar</h4>
+            <div class="foto-galeri">
+                <img src="/uploads/@Model.ImgPath" alt="Image" class="foto-img" onclick="openModal('/uploads/@Model.ImgPath')" />
+            </div>
+        </div>
+    }
+</article>
+
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption"></div>
+</div>
+
+<script>
+    function openModal(src) {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImg");
+        modal.style.display = "block";
+        modalImg.src = src;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+
+<style>
+    .flex {
+        display: flex;
+    }
+
+    .flex-col {
+        flex-direction: column;
+    }
+
+    .justify-between {
+        justify-content: space-between;
+    }
+
+    .items-center {
+        align-items: center;
+    }
+
+    .shadow {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .my-4 {
+        margin: 1rem 0;
+    }
+
+    .bg-white {
+        background-color: white;
+    }
+
+    .p-6 {
+        padding: 1.5rem;
+    }
+
+    .pb-3 {
+        padding-bottom: 0.75rem;
+    }
+
+    .pb-4 {
+        padding-bottom: 1rem;
+    }
+
+    .pb-2 {
+        padding-bottom: 0.5rem;
+    }
+
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+
+    .font-bold {
+        font-weight: bold;
+    }
+
+    .font-semibold {
+        font-weight: 600;
+    }
+
+    .text-xl {
+        font-size: 1.25rem;
+    }
+
+    .foto-galeri {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .foto-img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .btn-secondary {
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-danger {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-secondary:hover {
+        color: #fff;
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .btn-danger:hover {
+        color: #fff;
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    .mr-2 {
+        margin-right: 0.5rem;
+    }
+</style>

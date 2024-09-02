@@ -1,0 +1,61 @@
+﻿@model List<Login>
+
+@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+</head>
+<body>
+    <div class="login-container">
+        <h2>Giriş yap</h2>
+        <form asp-action="Login" method="post">
+            <div class="form-group">
+                <label for="username">Kullanıcı adı:</label>
+                <input autocomplete="off" type="text" id="username" name="Username" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre:</label>
+                <div class="input-group">
+                    <input autocomplete="off" type="password" id="password" name="Password" class="form-control" required />
+                    <div class="input-group-append">
+                        <span class="input-group-text" onclick="togglePasswordVisibility()">
+                            <i id="togglePasswordIcon" class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" id="rememberMe" name="RememberMe" class="form-check-input" />
+                <label for="rememberMe" class="form-check-label">Beni hatırla</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Giriş yap</button>
+        </form>
+        <div class="new-user">
+            Yeni üye misiniz? <a href="/Account/Register">Kayıt olmak için tıklayınız.</a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            var icon = document.getElementById("togglePasswordIcon");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+
+</body>
+</html>
